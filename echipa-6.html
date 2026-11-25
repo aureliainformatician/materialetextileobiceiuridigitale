@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Echipa 6: Smart&Safe · Cognifeed</title>
+<style>:root{--c:#1b6f86}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",Roboto,Arial,sans-serif;background:#f3f5f9;color:#1d2430;line-height:1.55;font-size:16px}
+a{color:var(--c)}
+.top{position:sticky;top:0;z-index:10;background:#fff;border-bottom:3px solid var(--c);display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding:8px 16px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.brand{display:flex;flex-direction:column;font-size:15px}.brand .sub{font-size:12px;color:#5b6575}
+.nav{display:flex;gap:6px}
+.nav a{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;text-decoration:none;font-weight:700;border:2px solid var(--c);color:var(--c);background:#fff}
+.nav a.cur{background:var(--c);color:#fff}.nav a.ok{background:#e7f6ec;border-color:#2a8a4f;color:#2a8a4f}.nav a.ok.cur{background:#2a8a4f;color:#fff}
+.prog{flex:1 1 120px;height:8px;background:#e5e9f0;border-radius:6px;overflow:hidden;min-width:100px}#bar{height:100%;width:0;background:var(--c);transition:width .4s}
+.tools{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.clock{font-weight:700;color:var(--c);font-variant-numeric:tabular-nums}.clock.late{color:#c0392b}
+.btn{background:var(--c);color:#fff;border:0;border-radius:8px;padding:9px 16px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit}
+.btn.small{padding:6px 10px;font-size:13px}.btn.ghost{background:#fff;color:var(--c);border:1.5px solid var(--c)}
+.btn:hover{filter:brightness(1.08)}
+main{max-width:980px;margin:0 auto;padding:16px}
+.intro,.sec{background:#fff;border-radius:14px;padding:20px 22px;margin:18px 0;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.intro h1{margin:0 0 6px;color:var(--c)}
+.themes span{display:inline-block;background:var(--c);color:#fff;border-radius:20px;padding:3px 12px;margin:0 6px 6px 0;font-size:14px}
+.members{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:8px}.members p{grid-column:1/-1;margin:6px 0 0}
+.member{display:flex;gap:6px}.member input{flex:1;min-width:0}
+.rolehelp{margin-top:10px;background:#f7f9fc;border-radius:8px;padding:8px 12px}.rolehelp summary{cursor:pointer;font-weight:600}
+.saved{font-size:13px;color:#5b6575;margin:10px 0 0}
+.sh{display:flex;align-items:center;gap:14px;flex-wrap:wrap;border-bottom:1px solid #e5e9f0;padding-bottom:10px;margin-bottom:12px}
+.sh > div:nth-child(2){flex:1}
+.snum{width:46px;height:46px;border-radius:12px;background:var(--c);color:#fff;font-size:24px;font-weight:800;display:grid;place-items:center}
+.sh h2{margin:0;font-size:21px}.meta{margin:2px 0 0;color:#5b6575;font-size:13px}
+.box{border-radius:10px;padding:12px 16px;margin:12px 0}
+.box h3{margin:0 0 6px;font-size:17px}.box h3 em,.task h4 em{font-style:normal;font-weight:600;font-size:12px;background:rgba(0,0,0,.07);border-radius:10px;padding:2px 8px;margin-left:6px;vertical-align:middle}
+.info{background:#f4f7fc;border-left:5px solid var(--c)}
+.focus{background:#fff8e6;border-left:5px solid #e0a100}
+.dig{background:#eef8f2;border-left:5px solid #2a8a4f}
+.work{background:#fff;border:1.5px dashed #c9d2df}
+.quote{font-style:italic;color:#2a6a45}
+table.ref{border-collapse:collapse;width:100%;font-size:14px;margin:8px 0}table.ref th,table.ref td{border:1px solid #d5dce6;padding:6px 8px;vertical-align:top;text-align:left}table.ref th{background:var(--c);color:#fff}
+.task{margin:12px 0 18px}.task h4{margin:0 0 8px;font-size:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tn{width:26px;height:26px;border-radius:50%;background:var(--c);color:#fff;display:inline-grid;place-items:center;font-size:14px}
+.fld{display:block;margin:8px 0}.fld>span{display:block;font-size:14px;font-weight:600;margin-bottom:3px}
+input[type=text],input[type=number],input:not([type]),textarea,select{width:100%;font:inherit;font-size:15px;padding:8px 10px;border:1.5px solid #c9d2df;border-radius:8px;background:#fff}
+textarea{resize:vertical}input:focus,textarea:focus,select:focus{outline:none;border-color:var(--c);box-shadow:0 0 0 3px rgba(0,0,0,.06)}
+.row2,.row3{display:grid;gap:10px}.row2{grid-template-columns:1fr 1fr}.row3{grid-template-columns:1fr 1fr 1fr}
+@media(max-width:640px){.row2,.row3{grid-template-columns:1fr}}
+.tw{overflow-x:auto}table.grid{border-collapse:collapse;width:100%;font-size:14px}table.grid th{background:#eef2f8;text-align:left;padding:6px 8px;border:1px solid #d5dce6}
+table.grid td{border:1px solid #d5dce6;padding:3px}table.grid td input{border:0;border-radius:4px;padding:6px}table.grid td.fixed{padding:6px 8px;background:#fafbfd;font-weight:600;width:42%}
+.total{text-align:right;margin:6px 0}
+.classify .ct{margin:0 0 6px;font-weight:600}.crow{display:grid;grid-template-columns:1fr 210px 24px;gap:8px;align-items:center;margin:4px 0}
+@media(max-width:640px){.crow{grid-template-columns:1fr 150px 20px}}
+.mark{font-size:18px}.mark.g{color:#2a8a4f}.mark.b{color:#c0392b}.cres{font-weight:600;margin-left:8px}
+.checks{display:grid;gap:4px;margin:6px 0}.chk{display:flex;gap:8px;align-items:center}
+.sl{display:grid;grid-template-columns:1fr 160px 24px;align-items:center;gap:8px}.sl>span{margin:0}.sl output{font-weight:700;color:var(--c)}
+.hint{font-weight:600;margin:10px 0 0}
+.done{display:flex;gap:10px;align-items:center;background:#f4f7fc;border-radius:8px;padding:10px 12px;font-weight:600;margin-top:8px}
+.done input,.chk input{width:20px;height:20px}
+.q{border:1px solid #e1e6ee;border-radius:10px;padding:10px 14px;margin:10px 0}.q p{margin:0 0 6px}
+.opt{display:block;padding:3px 0;cursor:pointer}.q.qok{border-color:#2a8a4f;background:#f0faf3}.q.qbad{border-color:#c0392b;background:#fdf2f1}
+.why{font-size:14px;color:#4a5566;margin:6px 0 0!important}
+.tagteam{font-size:12px;background:var(--c);color:#fff;border-radius:10px;padding:1px 8px;margin-left:6px}
+.qres{font-size:18px;margin-top:12px}
+footer{text-align:center;color:#6b7484;font-size:13px;padding:20px}
+.report .ans{display:inline-block;min-width:20px;color:#0b3d91;font-weight:600;white-space:pre-wrap}
+.report div.ans{display:block;border-left:3px solid var(--c);padding:4px 8px;background:#f7f9fc}
+.rep{text-align:center;color:#5b6575}
+@media print{.top,.timer,.btn,footer{display:none!important}body{background:#fff}.sec,.intro{box-shadow:none;break-inside:auto;border:1px solid #ddd}}
+.member select{width:130px;flex:0 0 130px}
+.classify .crows{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
+@media(max-width:760px){.classify .crows{grid-template-columns:1fr}}
+.crow{grid-template-columns:1fr 190px 22px}
+</style></head>
+<body data-team="6">
+<div class="top">
+  <div class="brand">⚙️ <b>Echipa 6: Smart&Safe</b><span class="sub">Cognifeed · Construim împreună obiceiuri digitale sănătoase</span></div>
+  <nav class="nav"><a href="#s1" data-s="s1">1</a><a href="#s2" data-s="s2">2</a><a href="#s3" data-s="s3">3</a><a href="#s4" data-s="s4">4</a><a href="#s5" data-s="s5">5</a><a href="#s6" data-s="s6">6</a><a href="#s7" data-s="s7">7</a><a href="#s8" data-s="s8">8</a></nav>
+  <div class="prog"><div id="bar"></div></div>
+  <div class="tools"><span id="clock" class="clock"></span>
+    <button type="button" class="btn small ghost" onclick="openFull()" id="fullbtn">⤢ Filă nouă</button>
+    <button type="button" class="btn small" onclick="exportReport()">⬇ Descarcă</button>
+    <button type="button" class="btn small ghost" onclick="copyAll()">📋 Copiază</button>
+    <button type="button" class="btn small ghost" onclick="window.print()">🖨 PDF</button>
+    <label class="btn small ghost">⬆ Încarcă<input type="file" accept=".html,.json" onchange="importFile(this)" hidden></label></div>
+</div>
+<main>
+<section class="intro" id="s0">
+  <h1>⚙️ Echipa 6: Smart&Safe</h1>
+  <p class="themes"><span>Tehnologii moderne</span><span>Controlul calității</span><span>Sustenabilitate</span></p>
+  <p>Parcurgeți pe rând cele <b>8 secțiuni</b> ale paginii, câte <b>30 de minute</b> fiecare: 7 secțiuni după lecțiile din manualul de Educație tehnologică (Unitatea 1, Materiale textile) și quizul final. Răspunsurile se salvează automat pe acest calculator. La final apăsați <b>⬇ Descarcă</b> și trimiteți fișierul profesorului.</p>
+  <div class="members"><p><b>Membrii echipei și rolurile de azi</b> (doar prenumele):</p><div class="member"><input data-save id="m1" placeholder="Prenume elev 1" aria-label="Prenume elev 1">
+      <select data-save id="r1" aria-label="Rol elev 1"><option value="">Rol…</option><option>Coordonator</option><option>Cercetător</option><option>Editor</option><option>Verificator</option></select></div><div class="member"><input data-save id="m2" placeholder="Prenume elev 2" aria-label="Prenume elev 2">
+      <select data-save id="r2" aria-label="Rol elev 2"><option value="">Rol…</option><option>Coordonator</option><option>Cercetător</option><option>Editor</option><option>Verificator</option></select></div><div class="member"><input data-save id="m3" placeholder="Prenume elev 3" aria-label="Prenume elev 3">
+      <select data-save id="r3" aria-label="Rol elev 3"><option value="">Rol…</option><option>Coordonator</option><option>Cercetător</option><option>Editor</option><option>Verificator</option></select></div><div class="member"><input data-save id="m4" placeholder="Prenume elev 4" aria-label="Prenume elev 4">
+      <select data-save id="r4" aria-label="Rol elev 4"><option value="">Rol…</option><option>Coordonator</option><option>Cercetător</option><option>Editor</option><option>Verificator</option></select></div></div>
+  <details class="rolehelp"><summary>Ce face fiecare rol?</summary><ul>
+   <li><b>Coordonator</b>: citește sarcinile, împarte munca, pornește cronometrul, prezintă la final.</li>
+   <li><b>Cercetător</b>: caută informația în manual și în <a href="https://aureliainformatician.github.io/fise-etwinning-cognifeed/" target="_blank" rel="noopener">fișa echipei</a>.</li>
+   <li><b>Editor</b>: scrie răspunsurile în pagină.</li>
+   <li><b>Verificator</b>: verifică corectitudinea și că nu apar nume complete, fețe sau date personale; bifează „Am terminat”.</li></ul></details>
+  <p class="saved" id="saved">Salvare automată activă.</p>
+</section>
+
+<section class="sec" id="s1" data-title="Materialele textile">
+  <header class="sh">
+    <div class="snum">1</div>
+    <div><h2>Lecția 1 · Materialele textile din jurul nostru</h2><p class="meta">Manual: p. 16–17 · ⏱ 30 de minute: 10 citim · 5 legătura digitală · 15 lucrăm</p></div>
+    <button type="button" class="btn timer" data-sec="s1" onclick="startTimer('s1')">▶ Pornește 30 min</button>
+  </header>
+  <div class="box info"><h3>📖 Ce învățăm <em>10 min</em></h3><p><b>Fibra textilă</b> este un corp solid, natural sau obținut pe cale chimică, mult mai lung decât lat. Din fibre se obțin firele, iar din fire se obțin țesăturile și tricoturile.</p>
+<table class="ref"><tr><th colspan="2">Fibre naturale</th><th colspan="2">Fibre chimice</th></tr>
+<tr><td><b>vegetale</b><br>bumbac, in, cânepă, iută</td><td><b>animale</b><br>lână, mătase, mohair, cașmir, angora</td><td><b>artificiale</b><br>din celuloză, proteine, sticlă, metal (ex. viscoza)</td><td><b>sintetice</b><br>poliester, poliamidă, acril, elastan (din petrol, cărbune)</td></tr></table>
+<p><b>Cum se obțin materialele:</b> răsucirea fibrelor se numește <i>toarcere</i> (manual) sau <i>filare</i> (în filaturi) și dă <b>firele</b>. <b>Țesătura</b> se obține la războiul de țesut, împletind perpendicular <i>firele de urzeală</i> (pe lungime) cu <i>firele de bătătură</i> (pe lățime). <b>Tricotul</b> este format din ochiuri înlănțuite; elementul de bază este <b>ochiul</b>.</p>
+<p><b>Proprietățile materialelor textile:</b> fizice (lungime, lățime, grosime, desime, masă în g/m²); mecanice (rezistență, elasticitate, deșirabilitate); igienico-funcționale (izolare termică, <b>higroscopicitate</b> – reținerea apei și a transpirației, permeabilitate la aer); de aspect (culoare, luciu, revenire din șifonare, flexibilitate); tehnologice (croire, coasere, împâslire, filare).</p>
+<p>Bumbacul este cel mai folosit material pentru haine: lasă aerul să treacă și absoarbe ușor apa. Din bumbac se fac lenjerii de pat, fețe de masă, rochii, prosoape; din tricot se fac ciorapi, mănuși, fulare.</p></div>
+  
+  <div class="box dig"><h3>🔗 Legătura digitală <em>5 min</em></h3><p>La fel ca materialele, și obiceiurile noastre digitale au „proprietăți”: unele ne protejează, altele ne obosesc. Tema voastră: <b>Controlul calității</b>.</p><p>În atelier, controlul tehnic de calitate verifică aspectul produsului și corectitudinea operațiilor. La o aplicație facem la fel: testăm dacă funcționează, dacă este clară, dacă este sigură (ce date cere) și notăm defectele, numite „bug-uri”. Un raport bun spune: ce am făcut, ce s-a întâmplat, ce ne așteptam să se întâmple. Așa veți testa aplicația Cognifeed.</p><p class="quote">„Controlul de calitate verifică o față de pernă; tot așa verificăm și o aplicație.”</p></div>
+  <div class="box work"><h3>✏️ Sarcinile echipei <em>15 min</em></h3><div class="task"><h4><span class="tn">1</span>Clasificați fibrele <em>4 min</em></h4><div class="classify" id="s1c"><p class="ct">Alegeți tipul fiecărei fibre:</p><div class="crows"><div class="crow"><span>angora</span><select data-save id="s1c_0" data-ok="naturală animală"><option value="">— alege —</option><option>naturală vegetală</option><option>naturală animală</option><option>chimică artificială</option><option>chimică sintetică</option></select><b class="mark"></b></div><div class="crow"><span>elastan</span><select data-save id="s1c_1" data-ok="chimică sintetică"><option value="">— alege —</option><option>naturală vegetală</option><option>naturală animală</option><option>chimică artificială</option><option>chimică sintetică</option></select><b class="mark"></b></div><div class="crow"><span>lână</span><select data-save id="s1c_2" data-ok="naturală animală"><option value="">— alege —</option><option>naturală vegetală</option><option>naturală animală</option><option>chimică artificială</option><option>chimică sintetică</option></select><b class="mark"></b></div><div class="crow"><span>mătase</span><select data-save id="s1c_3" data-ok="naturală animală"><option value="">— alege —</option><option>naturală vegetală</option><option>naturală animală</option><option>chimică artificială</option><option>chimică sintetică</option></select><b class="mark"></b></div><div class="crow"><span>bumbac</span><select data-save id="s1c_4" data-ok="naturală vegetală"><option value="">— alege —</option><option>naturală vegetală</option><option>naturală animală</option><option>chimică artificială</option><option>chimică sintetică</option></select><b class="mark"></b></div><div class="crow"><span>cânepă</span><select data-save id="s1c_5" data-ok="naturală vegetală"><option value="">— alege —</option><option>naturală vegetală</option><option>naturală animală</option><option>chimică artificială</option><option>chimică sintetică</option></select><b class="mark"></b></div><div class="crow"><span>viscoză</span><select data-save id="s1c_6" data-ok="chimică artificială"><option value="">— alege —</option><option>naturală vegetală</option><option>naturală animală</option><option>chimică artificială</option><option>chimică sintetică</option></select><b class="mark"></b></div><div class="crow"><span>poliester</span><select data-save id="s1c_7" data-ok="chimică sintetică"><option value="">— alege —</option><option>naturală vegetală</option><option>naturală animală</option><option>chimică artificială</option><option>chimică sintetică</option></select><b class="mark"></b></div><div class="crow"><span>in</span><select data-save id="s1c_8" data-ok="naturală vegetală"><option value="">— alege —</option><option>naturală vegetală</option><option>naturală animală</option><option>chimică artificială</option><option>chimică sintetică</option></select><b class="mark"></b></div><div class="crow"><span>poliamidă</span><select data-save id="s1c_9" data-ok="chimică sintetică"><option value="">— alege —</option><option>naturală vegetală</option><option>naturală animală</option><option>chimică artificială</option><option>chimică sintetică</option></select><b class="mark"></b></div></div><button type="button" class="btn small" onclick="checkClassify('s1c')">Verifică</button> <span class="cres" id="s1c_res"></span></div></div><div class="task"><h4><span class="tn">2</span>Detectivii etichetelor <em>4 min</em></h4><p>Căutați 3 produse textile în clasă sau pe voi (fără nume pe etichetă).</p><div class="tw"><table class="grid" id="s1g"><thead><tr><th>Produsul</th><th>Compoziția de pe etichetă</th><th>Fibră naturală sau chimică?</th><th>O proprietate utilă</th></tr></thead><tbody><tr><td><input data-save id="s1g_0_0" type="text" aria-label="Produsul"></td><td><input data-save id="s1g_0_1" type="text" aria-label="Compoziția de pe etichetă"></td><td><input data-save id="s1g_0_2" type="text" aria-label="Fibră naturală sau chimică?"></td><td><input data-save id="s1g_0_3" type="text" aria-label="O proprietate utilă"></td></tr><tr><td><input data-save id="s1g_1_0" type="text" aria-label="Produsul"></td><td><input data-save id="s1g_1_1" type="text" aria-label="Compoziția de pe etichetă"></td><td><input data-save id="s1g_1_2" type="text" aria-label="Fibră naturală sau chimică?"></td><td><input data-save id="s1g_1_3" type="text" aria-label="O proprietate utilă"></td></tr><tr><td><input data-save id="s1g_2_0" type="text" aria-label="Produsul"></td><td><input data-save id="s1g_2_1" type="text" aria-label="Compoziția de pe etichetă"></td><td><input data-save id="s1g_2_2" type="text" aria-label="Fibră naturală sau chimică?"></td><td><input data-save id="s1g_2_3" type="text" aria-label="O proprietate utilă"></td></tr></tbody></table></div></div><div class="task"><h4><span class="tn">3</span>Țesătură sau tricot? <em>3 min</em></h4><label class="fld"><span>Explicați în 2 propoziții diferența dintre țesătură și tricot și dați câte un exemplu.</span><textarea data-save id="s1t" rows="2" placeholder=""></textarea></label></div><div class="task"><h4><span class="tn">4</span>Proprietățile obiceiului: Controlul calității <em>4 min</em></h4><label class="fld"><span>Scrieți 2 asemănări „fibră – obicei digital” pentru tema Controlul calității. Exemplu: „Controlul de calitate verifică o față de pernă; tot așa verificăm și o aplicație.”</span><textarea data-save id="s1d" rows="3" placeholder=""></textarea></label><p class='hint'>Jurnalul ecranului (anonim, media echipei de 4):</p><div class='row3'><label class="fld "><span>Ore pe ecran / zi de școală</span><input data-save id="s1h1" type="number" placeholder="ex. 3"></label><label class="fld "><span>Ore pe ecran / zi de weekend</span><input data-save id="s1h2" type="number" placeholder="ex. 5"></label><label class="fld "><span>Ore de studiu / zi</span><input data-save id="s1h3" type="number" placeholder="ex. 2"></label></div></div></div>
+  <label class="done"><input type="checkbox" data-save id="s1_done" onchange="updProgress()"> Am terminat secțiunea și Verificatorul a controlat răspunsurile</label>
+</section>
+<section class="sec" id="s2" data-title="În atelier">
+  <header class="sh">
+    <div class="snum">2</div>
+    <div><h2>Lecția 2 · În atelierul de realizare a produselor textile</h2><p class="meta">Manual: p. 18–20 · ⏱ 30 de minute: 10 citim · 5 legătura digitală · 15 lucrăm</p></div>
+    <button type="button" class="btn timer" data-sec="s2" onclick="startTimer('s2')">▶ Pornește 30 min</button>
+  </header>
+  <div class="box info"><h3>📖 Ce învățăm <em>10 min</em></h3><p><b>Atelierul</b> este încăperea amenajată și dotată pentru activitatea de croitorie. Orice produs are nevoie de 4 <b>resurse</b>: <i>umane</i> (profesor, elevi), <i>materiale</i> (materii prime, scule, spațiu), <i>financiare</i> (bani) și <i>de timp</i>. Exemplu din manual: o broșă din material textil costă 10,50 lei și se face în circa 50 de minute.</p>
+<p><b>Elementele locului de muncă:</b> mijloacele de muncă (scule, mașini de cusut, masă de călcat), obiectul muncii (produsul textil), condițiile de muncă și forța de muncă (croitori, creatori).</p>
+<p><b>Instrumentele atelierului:</b> planșeta (pentru tipare și croit), linia gradată de 1 m, centimetrul de croitorie, cutterul și foarfecele pentru croit, creta de croitorie, fierul de călcat.</p>
+<p><b>Ergonomia</b> înseamnă un loc de muncă confortabil: lumină, temperatură, zgomot redus, unelte folosite des așezate la îndemână. <b>Condițiile ergonomice</b> reduc efortul prin economie de mișcări.</p>
+<p><b>Norme de securitate:</b> folosim echipament de protecție (halat, degetar); privirea rămâne pe operația pe care o facem; nu folosim ace strâmbe sau fără vârf; fierul de călcat stă doar pe suportul lui; masa de croit nu se aglomerează. <b>Prevenirea incendiilor:</b> căile de evacuare rămân libere, prizele și mașinile sunt în stare bună, materialele nu stau lângă surse de căldură, la final mașinile se scot din priză.</p></div>
+  
+  <div class="box dig"><h3>🔗 Legătura digitală <em>5 min</em></h3><p>Și online avem un „atelier”: telefonul, tableta, conturile. Ca în atelierul de croitorie, are reguli de securitate. Tema voastră: <b>Sustenabilitate</b>.</p><p>Sustenabil înseamnă să folosim resursele fără să lăsăm o planetă mai săracă. La textile: cumpărăm mai puține haine, le reparăm, alegem bumbac biologic sau materiale reciclate, evităm „fast fashion”. În lumea digitală: folosim telefonul mai mulți ani, reparăm în loc să aruncăm, predăm electronicele vechi la reciclare, nu lăsăm videoclipurile să ruleze degeaba (și streamingul consumă energie).</p></div>
+  <div class="box work"><h3>✏️ Sarcinile echipei <em>15 min</em></h3><div class="task"><h4><span class="tn">1</span>Proiect, etapa I: Fișa resurselor pentru Fața de pernă <em>6 min</em></h4><p>Completați materialele și prețurile. Totalul se calculează singur.</p><div class="tw"><table class="grid" id="s2g"><thead><tr><th>Material / instrument</th><th>Cantitate</th><th>Preț pe bucată (lei)</th><th>Total (lei)</th></tr></thead><tbody><tr><td><input data-save id="s2g_0_0" type="text" aria-label="Material / instrument"></td><td><input data-save id="s2g_0_1" type="number" aria-label="Cantitate"></td><td><input data-save id="s2g_0_2" type="number" aria-label="Preț pe bucată (lei)"></td><td><input data-save id="s2g_0_3" type="text" aria-label="Total (lei)"></td></tr><tr><td><input data-save id="s2g_1_0" type="text" aria-label="Material / instrument"></td><td><input data-save id="s2g_1_1" type="number" aria-label="Cantitate"></td><td><input data-save id="s2g_1_2" type="number" aria-label="Preț pe bucată (lei)"></td><td><input data-save id="s2g_1_3" type="text" aria-label="Total (lei)"></td></tr><tr><td><input data-save id="s2g_2_0" type="text" aria-label="Material / instrument"></td><td><input data-save id="s2g_2_1" type="number" aria-label="Cantitate"></td><td><input data-save id="s2g_2_2" type="number" aria-label="Preț pe bucată (lei)"></td><td><input data-save id="s2g_2_3" type="text" aria-label="Total (lei)"></td></tr><tr><td><input data-save id="s2g_3_0" type="text" aria-label="Material / instrument"></td><td><input data-save id="s2g_3_1" type="number" aria-label="Cantitate"></td><td><input data-save id="s2g_3_2" type="number" aria-label="Preț pe bucată (lei)"></td><td><input data-save id="s2g_3_3" type="text" aria-label="Total (lei)"></td></tr><tr><td><input data-save id="s2g_4_0" type="text" aria-label="Material / instrument"></td><td><input data-save id="s2g_4_1" type="number" aria-label="Cantitate"></td><td><input data-save id="s2g_4_2" type="number" aria-label="Preț pe bucată (lei)"></td><td><input data-save id="s2g_4_3" type="text" aria-label="Total (lei)"></td></tr></tbody></table></div><p class='total'>Total general: <b id='s2sum'>0</b> lei</p><div class='row3'><label class="fld "><span>Resurse umane</span><input data-save id="s2r1" type="text" placeholder="cine lucrează?"></label><label class="fld "><span>Resurse de timp</span><input data-save id="s2r2" type="text" placeholder="ex. 2 × 50 min"></label><label class="fld "><span>Resurse financiare</span><input data-save id="s2r3" type="text" placeholder="de unde banii?"></label></div></div><div class="task"><h4><span class="tn">2</span>Reguli de atelier = reguli online (Sustenabilitate) <em>5 min</em></h4><div class="tw"><table class="grid" id="s2p"><thead><tr><th>Regula din atelier</th><th>Perechea ei digitală</th></tr></thead><tbody><tr><td class='fixed'>Folosesc echipament de protecție (halat, degetar).</td><td><input data-save id="s2p_0_1" type="text" aria-label="Perechea ei digitală"></td></tr><tr><td class='fixed'>Privirea rămâne pe ce lucrez.</td><td><input data-save id="s2p_1_1" type="text" aria-label="Perechea ei digitală"></td></tr><tr><td class='fixed'>Fierul de călcat stă doar pe suportul lui.</td><td><input data-save id="s2p_2_1" type="text" aria-label="Perechea ei digitală"></td></tr><tr><td class='fixed'>Căile de evacuare rămân libere.</td><td><input data-save id="s2p_3_1" type="text" aria-label="Perechea ei digitală"></td></tr></tbody></table></div></div><div class="task"><h4><span class="tn">3</span>Ergonomia biroului meu digital <em>4 min</em></h4><label class="fld"><span>Scrieți 3 reguli pentru un loc de lucru sănătos la calculator (lumină, distanța față de ecran, poziția corpului, pauze).</span><textarea data-save id="s2e" rows="3" placeholder=""></textarea></label></div></div>
+  <label class="done"><input type="checkbox" data-save id="s2_done" onchange="updProgress()"> Am terminat secțiunea și Verificatorul a controlat răspunsurile</label>
+</section>
+<section class="sec" id="s3" data-title="Cum se realizează">
+  <header class="sh">
+    <div class="snum">3</div>
+    <div><h2>Lecția 3 · Cum se realizează produsele textile</h2><p class="meta">Manual: p. 21–23 · ⏱ 30 de minute: 10 citim · 5 legătura digitală · 15 lucrăm</p></div>
+    <button type="button" class="btn timer" data-sec="s3" onclick="startTimer('s3')">▶ Pornește 30 min</button>
+  </header>
+  <div class="box info"><h3>📖 Ce învățăm <em>10 min</em></h3><p><b>Țeserea</b> dă țesăturile (război de țesut, fire de urzeală și de bătătură, suveică, pieptăn). <b>Tricotarea</b> înlănțuie firele în ochiuri, pe rânduri și pe șiruri (andrele, fire). <b>Coaserea</b> prinde cu ață părțile unui material.</p>
+<p><b>Cusăturile manuale:</b> de surfilare (opresc destrămarea marginilor), punctate (înaintea acului, în urma acului, în cruce) și ascunse (nu se văd pe față).</p>
+<p><b>Limbajul grafic:</b> orice produs pornește de la o <b>schiță</b> sau un desen tehnic. Desenăm vederile (din față, de sus, din stânga). Reprezentarea pe planele de proiecție rotite se numește <b>epură</b>. Desenul se <b>cotează</b> cu cota, liniile ajutătoare și liniile de cotă.</p>
+<p><b>Operațiile tehnologice pentru produse din țesătură:</b> <i>pregătire</i> (pregătirea materialelor, călcarea materialului, șablonarea, trasarea cu creta), <i>prelucrare</i> (croirea, coaserea), <i>finisare</i> (curățarea de scame, călcarea produsului).</p>
+<p><b>Fișa tehnologică</b> conține: denumirea și caracteristicile produsului, materialele, schița, operațiile tehnologice, uneltele și controlul tehnic de calitate.</p></div>
+  
+  <div class="box dig"><h3>🔗 Legătura digitală <em>5 min</em></h3><p>Un obicei digital sănătos se „confecționează” tot în etape: <b>pregătire</b> (aflu informația), <b>prelucrare</b> (exersez regula), <b>finisare</b> (verific și o păstrez). Aplicați metoda pentru tema <b>Controlul calității</b>.</p></div>
+  <div class="box work"><h3>✏️ Sarcinile echipei <em>15 min</em></h3><div class="task"><h4><span class="tn">1</span>Ordinea operațiilor <em>4 min</em></h4><div class="classify" id="s3c"><p class="ct">În ce etapă este fiecare operație?</p><div class="crows"><div class="crow"><span>Croirea materialului</span><select data-save id="s3c_0" data-ok="prelucrare"><option value="">— alege —</option><option>pregătire</option><option>prelucrare</option><option>finisare</option></select><b class="mark"></b></div><div class="crow"><span>Călcarea materialului</span><select data-save id="s3c_1" data-ok="pregătire"><option value="">— alege —</option><option>pregătire</option><option>prelucrare</option><option>finisare</option></select><b class="mark"></b></div><div class="crow"><span>Pregătirea materialelor necesare</span><select data-save id="s3c_2" data-ok="pregătire"><option value="">— alege —</option><option>pregătire</option><option>prelucrare</option><option>finisare</option></select><b class="mark"></b></div><div class="crow"><span>Călcarea produsului finit</span><select data-save id="s3c_3" data-ok="finisare"><option value="">— alege —</option><option>pregătire</option><option>prelucrare</option><option>finisare</option></select><b class="mark"></b></div><div class="crow"><span>Șablonarea tiparelor pe material</span><select data-save id="s3c_4" data-ok="pregătire"><option value="">— alege —</option><option>pregătire</option><option>prelucrare</option><option>finisare</option></select><b class="mark"></b></div><div class="crow"><span>Curățarea de scame</span><select data-save id="s3c_5" data-ok="finisare"><option value="">— alege —</option><option>pregătire</option><option>prelucrare</option><option>finisare</option></select><b class="mark"></b></div><div class="crow"><span>Trasarea liniilor cu creta</span><select data-save id="s3c_6" data-ok="pregătire"><option value="">— alege —</option><option>pregătire</option><option>prelucrare</option><option>finisare</option></select><b class="mark"></b></div><div class="crow"><span>Coaserea părților componente</span><select data-save id="s3c_7" data-ok="prelucrare"><option value="">— alege —</option><option>pregătire</option><option>prelucrare</option><option>finisare</option></select><b class="mark"></b></div></div><button type="button" class="btn small" onclick="checkClassify('s3c')">Verifică</button> <span class="cres" id="s3c_res"></span></div></div><div class="task"><h4><span class="tn">2</span>Proiect, etapa II: Tiparul feței de pernă <em>5 min</em></h4><p>Desenați pe caiet schița și epura, apoi notați cotele aici.</p><div class='row3'><label class="fld "><span>Lungime (cm)</span><input data-save id="s3l" type="number" placeholder="40"></label><label class="fld "><span>Lățime (cm)</span><input data-save id="s3w" type="number" placeholder="40"></label><label class="fld "><span>Adaos de cusătură (cm)</span><input data-save id="s3m" type="number" placeholder="1"></label></div><label class="fld"><span>Ce cusătură folosiți la margini și de ce?</span><textarea data-save id="s3s" rows="2" placeholder=""></textarea></label></div><div class="task"><h4><span class="tn">3</span>Rețeta obiceiului: Controlul calității <em>6 min</em></h4><div class="tw"><table class="grid" id="s3r"><thead><tr><th>Etapa</th><th>Ce facem concret</th></tr></thead><tbody><tr><td class='fixed'>Pregătire</td><td><input data-save id="s3r_0_1" type="text" aria-label="Ce facem concret"></td></tr><tr><td class='fixed'>Prelucrare</td><td><input data-save id="s3r_1_1" type="text" aria-label="Ce facem concret"></td></tr><tr><td class='fixed'>Finisare</td><td><input data-save id="s3r_2_1" type="text" aria-label="Ce facem concret"></td></tr></tbody></table></div></div></div>
+  <label class="done"><input type="checkbox" data-save id="s3_done" onchange="updProgress()"> Am terminat secțiunea și Verificatorul a controlat răspunsurile</label>
+</section>
+<section class="sec" id="s4" data-title="Analiză și valorificare">
+  <header class="sh">
+    <div class="snum">4</div>
+    <div><h2>Lecția 4 · Produsele textile: de la analiză la valorificare</h2><p class="meta">Manual: p. 24–25 · ⏱ 30 de minute: 10 citim · 5 legătura digitală · 15 lucrăm</p></div>
+    <button type="button" class="btn timer" data-sec="s4" onclick="startTimer('s4')">▶ Pornește 30 min</button>
+  </header>
+  <div class="box info"><h3>📖 Ce învățăm <em>10 min</em></h3><p>Un <b>produs</b> este un obiect care satisface o nevoie și poate fi vândut și cumpărat. Produsele cu aceeași materie primă, tehnologie sau destinație formează o <b>gamă de produse</b>.</p>
+<p><b>Fișa de analiză</b> conține: denumirea, domeniul de utilizare, materialele, alcătuirea (componentele), forma (schița), funcționalitatea, modul de prezentare, <b>disfuncționalitățile posibile</b> (defectele) și prețul estimat. Exemplu din manual: vesta din tricot de lână, fața din 2 componente simetrice și spate, defecte posibile – cusătură strâmbă, ochiuri lipsă, preț estimat 40 de lei.</p>
+<p><b>Evaluarea</b> ține cont de climă, purtător, confort și siguranță. <b>Promovarea</b> ține cont de modă, vârsta purtătorului, durata de viață și preț. <b>Valorificarea</b> înseamnă punerea în vânzare, reclama și expunerea (magazine, expoziții, reviste).</p>
+<p><b>Tradiții:</b> meșterii populari folosesc resursele naturale ale zonei. Ia, fota, catrința, ițarii, ștergarele și scoarțele poartă motive vechi: <b>soarele, crucea, spirala</b>. Simbolurile populare sunt geometrice și vegetale și au fost printre primele forme de comunicare.</p></div>
+  
+  <div class="box dig"><h3>🔗 Legătura digitală <em>5 min</em></h3><p>Și o aplicație, o postare sau un joc online sunt „produse”. Le analizăm la fel: cine le-a făcut, pentru ce, ce defecte pot avea. Privim prin lentila temei <b>Sustenabilitate</b>.</p></div>
+  <div class="box work"><h3>✏️ Sarcinile echipei <em>15 min</em></h3><div class="task"><h4><span class="tn">1</span>Proiect, etapa VI: Fișa de analiză a feței de pernă <em>6 min</em></h4><div class="tw"><table class="grid" id="s4a"><thead><tr><th>Aspect analizat</th><th>Răspunsul echipei</th></tr></thead><tbody><tr><td class='fixed'>Domeniul de utilizare</td><td><input data-save id="s4a_0_1" type="text" aria-label="Răspunsul echipei"></td></tr><tr><td class='fixed'>Materiale utilizate</td><td><input data-save id="s4a_1_1" type="text" aria-label="Răspunsul echipei"></td></tr><tr><td class='fixed'>Alcătuire</td><td><input data-save id="s4a_2_1" type="text" aria-label="Răspunsul echipei"></td></tr><tr><td class='fixed'>Funcționalitate</td><td><input data-save id="s4a_3_1" type="text" aria-label="Răspunsul echipei"></td></tr><tr><td class='fixed'>Disfuncționalități posibile</td><td><input data-save id="s4a_4_1" type="text" aria-label="Răspunsul echipei"></td></tr><tr><td class='fixed'>Preț estimat (lei)</td><td><input data-save id="s4a_5_1" type="text" aria-label="Răspunsul echipei"></td></tr></tbody></table></div></div><div class="task"><h4><span class="tn">2</span>Fișa de analiză a unui produs digital (Sustenabilitate) <em>5 min</em></h4><div class="tw"><table class="grid" id="s4d"><thead><tr><th>Aspect analizat</th><th>Răspunsul echipei</th></tr></thead><tbody><tr><td class='fixed'>Produsul digital (ex. Cognifeed, un joc, o rețea)</td><td><input data-save id="s4d_0_1" type="text" aria-label="Răspunsul echipei"></td></tr><tr><td class='fixed'>Pentru ce îl folosim</td><td><input data-save id="s4d_1_1" type="text" aria-label="Răspunsul echipei"></td></tr><tr><td class='fixed'>Ce date cere / ce riscuri are</td><td><input data-save id="s4d_2_1" type="text" aria-label="Răspunsul echipei"></td></tr><tr><td class='fixed'>Cum îl folosim respectând tema Sustenabilitate</td><td><input data-save id="s4d_3_1" type="text" aria-label="Răspunsul echipei"></td></tr></tbody></table></div></div><div class="task"><h4><span class="tn">3</span>Motivul tradițional al decorului <em>4 min</em></h4><div class='row2'><label class="fld "><span>Motivul ales</span><input data-save id="s4m" type="text" placeholder="soarele / crucea / spirala / altul"></label><label class="fld "><span>Zona sau țara</span><input data-save id="s4z" type="text" placeholder="ex. Maramureș / țara partenerului"></label></div><label class="fld"><span>Ce semnifică motivul și cum îl legăm de mesajul nostru?</span><textarea data-save id="s4s" rows="2" placeholder=""></textarea></label></div></div>
+  <label class="done"><input type="checkbox" data-save id="s4_done" onchange="updProgress()"> Am terminat secțiunea și Verificatorul a controlat răspunsurile</label>
+</section>
+<section class="sec" id="s5" data-title="Perspective">
+  <header class="sh">
+    <div class="snum">5</div>
+    <div><h2>Lecția 5 · Perspective de dezvoltare și utilizare a materialelor textile</h2><p class="meta">Manual: p. 26–27 · ⏱ 30 de minute: 10 citim · 5 legătura digitală · 15 lucrăm</p></div>
+    <button type="button" class="btn timer" data-sec="s5" onclick="startTimer('s5')">▶ Pornește 30 min</button>
+  </header>
+  <div class="box info"><h3>📖 Ce învățăm <em>10 min</em></h3><p>Textilele de azi au caracteristici speciale datorită noilor tehnologii: <b>tehnologia 3D</b> (fibre pe trei direcții: etanșeitate, tărie, protecție), <b>nanotehnologia</b> (materiale care se autocurăță, nu se udă, nu prind miros), <b>microîncapsularea</b> (agenți antimicrobieni, uleiuri din plante închise în țesătură), <b>tehnologia smart PCM</b> (fibre cu schimbare de fază, care reglează temperatura).</p>
+<p><b>Textilele inteligente</b> reacționează la stimuli: fibre cu schimbare de fază, cu memorie de formă, fibre cromice (fotocrome – la lumină, termocrome – la căldură), fibre de hidrogel și <b>e-textile</b>, care au senzori ce colectează și transferă date.</p>
+<p><b>Materiale moderne:</b> bumbacul biologic (fără pesticide, antialergic), viscoza (din celuloză regenerată), modalul (din lemn de fag), tencelul (din eucalipt), bambusul (antibacterian, anti-UV). Se folosesc tot mai mult țesăturile biodegradabile și materialele reciclate.</p>
+<p><b>Domenii:</b> sănătate (cămăși care monitorizează ritmul cardiac), sport, protecție (veste reflectorizante, combinezoane ignifuge), transport, construcții, agricultură. <b>Meserii:</b> croitor, creator de modă, filator, imprimator de textile, țesător, inginer textilist.</p></div>
+  <div class="box focus"><h3>⚙️ Experții echipei: Tehnologii moderne</h3><p>Tehnologiile moderne au schimbat textilele: tehnologia 3D (fibre pe trei direcții, pentru etanșeitate și protecție), nanotehnologia (materiale care se autocurăță, nu se udă, nu prind miros), microîncapsularea (agenți antimicrobieni sau uleiuri esențiale închiși în țesătură), tehnologia smart PCM (fibre care reglează temperatura). Echipa voastră este cea care testează: orice tehnologie nouă trebuie să treacă controlul de calitate.</p></div>
+  <div class="box dig"><h3>🔗 Legătura digitală <em>5 min</em></h3><p>O cămașă care măsoară pulsul este și un dispozitiv digital: colectează date. Cine le vede? Unde se păstrează? Gândiți-vă la temele <b>Controlul calității</b> și <b>Sustenabilitate</b>.</p></div>
+  <div class="box work"><h3>✏️ Sarcinile echipei <em>15 min</em></h3><div class="task"><h4><span class="tn">1</span>Tehnologia potrivită <em>4 min</em></h4><div class="classify" id="s5c"><p class="ct">Potriviți descrierea cu tehnologia:</p><div class="crows"><div class="crow"><span>Uleiuri din plante închise în țesătură</span><select data-save id="s5c_0" data-ok="microîncapsularea"><option value="">— alege —</option><option>nanotehnologia</option><option>tehnologia 3D</option><option>microîncapsularea</option><option>e-textile</option><option>fibre termocrome</option><option>smart PCM</option></select><b class="mark"></b></div><div class="crow"><span>Materiale care se autocurăță și nu prind miros</span><select data-save id="s5c_1" data-ok="nanotehnologia"><option value="">— alege —</option><option>nanotehnologia</option><option>tehnologia 3D</option><option>microîncapsularea</option><option>e-textile</option><option>fibre termocrome</option><option>smart PCM</option></select><b class="mark"></b></div><div class="crow"><span>Senzori care colectează și transferă date</span><select data-save id="s5c_2" data-ok="e-textile"><option value="">— alege —</option><option>nanotehnologia</option><option>tehnologia 3D</option><option>microîncapsularea</option><option>e-textile</option><option>fibre termocrome</option><option>smart PCM</option></select><b class="mark"></b></div><div class="crow"><span>Fibre care își schimbă culoarea la căldură</span><select data-save id="s5c_3" data-ok="fibre termocrome"><option value="">— alege —</option><option>nanotehnologia</option><option>tehnologia 3D</option><option>microîncapsularea</option><option>e-textile</option><option>fibre termocrome</option><option>smart PCM</option></select><b class="mark"></b></div><div class="crow"><span>Fibre așezate pe lungime, adâncime și înălțime</span><select data-save id="s5c_4" data-ok="tehnologia 3D"><option value="">— alege —</option><option>nanotehnologia</option><option>tehnologia 3D</option><option>microîncapsularea</option><option>e-textile</option><option>fibre termocrome</option><option>smart PCM</option></select><b class="mark"></b></div><div class="crow"><span>Fibre care reglează temperatura</span><select data-save id="s5c_5" data-ok="smart PCM"><option value="">— alege —</option><option>nanotehnologia</option><option>tehnologia 3D</option><option>microîncapsularea</option><option>e-textile</option><option>fibre termocrome</option><option>smart PCM</option></select><b class="mark"></b></div></div><button type="button" class="btn small" onclick="checkClassify('s5c')">Verifică</button> <span class="cres" id="s5c_res"></span></div></div><div class="task"><h4><span class="tn">2</span>Inventăm un textil inteligent pentru obiceiuri digitale sănătoase <em>7 min</em></h4><label class="fld "><span>Numele produsului</span><input data-save id="s5n" type="text" placeholder="ex. Brățara Pauză"></label><label class="fld"><span>Ce face? (ex. își schimbă culoarea după o oră de ecran)</span><textarea data-save id="s5f" rows="2" placeholder=""></textarea></label><label class="fld"><span>Ce date colectează și cum le protejăm (temele Controlul calității / Sustenabilitate)?</span><textarea data-save id="s5p" rows="2" placeholder=""></textarea></label></div><div class="task"><h4><span class="tn">3</span>Meseria viitorului <em>4 min</em></h4><label class="fld "><span>O meserie din domeniul textil + o abilitate digitală de care are nevoie</span><input data-save id="s5j" type="text" placeholder="ex. creator de modă – design pe calculator"></label></div></div>
+  <label class="done"><input type="checkbox" data-save id="s5_done" onchange="updProgress()"> Am terminat secțiunea și Verificatorul a controlat răspunsurile</label>
+</section>
+<section class="sec" id="s6" data-title="Atelier de creație">
+  <header class="sh">
+    <div class="snum">6</div>
+    <div><h2>Atelier de creație · Fața de pernă Cognifeed</h2><p class="meta">Manual: p. 28–29 · ⏱ 30 de minute: 10 citim · 5 legătura digitală · 15 lucrăm</p></div>
+    <button type="button" class="btn timer" data-sec="s6" onclick="startTimer('s6')">▶ Pornește 30 min</button>
+  </header>
+  <div class="box info"><h3>📖 Ce învățăm <em>10 min</em></h3><p>Produsul unității este <b>Fața de pernă</b>. În proiectul Cognifeed, fața de pernă primește un decor cu un mesaj pentru obiceiuri digitale sănătoase. Etapele proiectului din manual:</p>
+<ol><li>Fișa resurselor necesare (secțiunea 2)</li><li>Tiparul: schiță și epură (secțiunea 3)</li><li>Decorul: alegem tehnica, modelul și dimensiunile (ex. 10 × 10 cm) și cotăm desenul</li><li>Fișa tehnologică</li><li>Finalizarea: aplicăm decorul prin cusătură pe mijlocul feței principale</li><li>Fișa de analiză (secțiunea 4)</li><li>Verificarea produsului, stabilirea prețului, pliantul de promovare</li></ol>
+<p><b>Calculul economic</b> se face înmulțind cantitatea cu prețul fiecărui material și adunând totalurile, ca în exemplul din manual (pantaloni: 189 lei).</p></div>
+  
+  <div class="box dig"><h3>🔗 Legătura digitală <em>5 min</em></h3><p>Decorul echipei transmite tema voastră. Mesaj-exemplu: <b>„Testez, repar, păstrez”</b>. Fiecare echipă coase un petic de 10 × 10 cm; peticele tuturor echipelor (și ale partenerilor) formează Fața de pernă comună a proiectului.</p></div>
+  <div class="box work"><h3>✏️ Sarcinile echipei <em>15 min</em></h3><div class="task"><h4><span class="tn">1</span>Proiect, etapa IV: Fișa tehnologică <em>5 min</em></h4><div class="tw"><table class="grid" id="s6t"><thead><tr><th>Operația</th><th>Unelte</th><th>Timp (min)</th></tr></thead><tbody><tr><td><input data-save id="s6t_0_0" type="text" aria-label="Operația"></td><td><input data-save id="s6t_0_1" type="text" aria-label="Unelte"></td><td><input data-save id="s6t_0_2" type="text" aria-label="Timp (min)"></td></tr><tr><td><input data-save id="s6t_1_0" type="text" aria-label="Operația"></td><td><input data-save id="s6t_1_1" type="text" aria-label="Unelte"></td><td><input data-save id="s6t_1_2" type="text" aria-label="Timp (min)"></td></tr><tr><td><input data-save id="s6t_2_0" type="text" aria-label="Operația"></td><td><input data-save id="s6t_2_1" type="text" aria-label="Unelte"></td><td><input data-save id="s6t_2_2" type="text" aria-label="Timp (min)"></td></tr><tr><td><input data-save id="s6t_3_0" type="text" aria-label="Operația"></td><td><input data-save id="s6t_3_1" type="text" aria-label="Unelte"></td><td><input data-save id="s6t_3_2" type="text" aria-label="Timp (min)"></td></tr><tr><td><input data-save id="s6t_4_0" type="text" aria-label="Operația"></td><td><input data-save id="s6t_4_1" type="text" aria-label="Unelte"></td><td><input data-save id="s6t_4_2" type="text" aria-label="Timp (min)"></td></tr></tbody></table></div></div><div class="task"><h4><span class="tn">2</span>Proiect, etapele III și V: Decorul <em>5 min</em></h4><div class='row2'><label class="fld "><span>Mesajul peticului</span><input data-save id="s6m" type="text" placeholder="Testez, repar, păstrez"></label><label class="fld "><span>Simbolul desenat</span><input data-save id="s6s" type="text" placeholder="ex. lună, telefon care doarme, scut"></label></div><label class="fld "><span>Tehnica de cusătură aleasă</span><input data-save id="s6c" type="text" placeholder="înaintea acului / în urma acului / în cruce"></label></div><div class="task"><h4><span class="tn">3</span>Proiect, etapa VII: Verificare și promovare <em>5 min</em></h4><div class="checks"><label class="chk"><input type="checkbox" data-save id="s6v_0"> Tiparul are cotele corecte</label><label class="chk"><input type="checkbox" data-save id="s6v_1"> Cusătura este dreaptă și fixată</label><label class="chk"><input type="checkbox" data-save id="s6v_2"> Produsul este curățat de scame și călcat</label><label class="chk"><input type="checkbox" data-save id="s6v_3"> Am stabilit prețul</label><label class="chk"><input type="checkbox" data-save id="s6v_4"> Avem pliantul de promovare</label></div><label class="fld"><span>Textul pliantului (3–4 propoziții: produsul, materialul, mesajul, prețul)</span><textarea data-save id="s6p" rows="3" placeholder=""></textarea></label></div></div>
+  <label class="done"><input type="checkbox" data-save id="s6_done" onchange="updProgress()"> Am terminat secțiunea și Verificatorul a controlat răspunsurile</label>
+</section>
+<section class="sec" id="s7" data-title="Recapitulare">
+  <header class="sh">
+    <div class="snum">7</div>
+    <div><h2>Recapitulare · Materiale textile și obiceiuri digitale</h2><p class="meta">Manual: p. 30 · ⏱ 30 de minute: 10 citim · 5 legătura digitală · 15 lucrăm</p></div>
+    <button type="button" class="btn timer" data-sec="s7" onclick="startTimer('s7')">▶ Pornește 30 min</button>
+  </header>
+  <div class="box info"><h3>📖 Ce învățăm <em>10 min</em></h3><p>Schema unității are 4 ramuri: <b>clasificare</b> (fibre naturale vegetale și animale, fibre chimice artificiale și sintetice), <b>proprietăți</b> (fizice, mecanice, igienico-funcționale, de aspect, tehnologice), <b>utilizări</b> (îmbrăcăminte, lenjerie, textile tehnice în sănătate, sport, construcții) și <b>analiza de produs</b> (fișa de analiză).</p>
+<p>Ați parcurs drumul complet al unui produs textil: fibră → fir → țesătură → tipar → croire → coasere → finisare → control de calitate → analiză → promovare. În același timp ați construit pas cu pas un obicei digital sănătos.</p></div>
+  
+  <div class="box dig"><h3>🔗 Legătura digitală <em>5 min</em></h3><p>Reflecție Cognifeed: aplicația vă ajută să observați echilibrul dintre viața online și școală. Notați sincer, fără nume, cum vă simțiți după aceste săptămâni și ce ați aflat de la partenerii din alte țări.</p></div>
+  <div class="box work"><h3>✏️ Sarcinile echipei <em>15 min</em></h3><div class="task"><h4><span class="tn">1</span>Schema unității <em>5 min</em></h4><div class="tw"><table class="grid" id="s7g"><thead><tr><th>Ramura</th><th>Un exemplu explicat de echipă</th></tr></thead><tbody><tr><td class='fixed'>Clasificare</td><td><input data-save id="s7g_0_1" type="text" aria-label="Un exemplu explicat de echipă"></td></tr><tr><td class='fixed'>Proprietăți</td><td><input data-save id="s7g_1_1" type="text" aria-label="Un exemplu explicat de echipă"></td></tr><tr><td class='fixed'>Utilizări</td><td><input data-save id="s7g_2_1" type="text" aria-label="Un exemplu explicat de echipă"></td></tr><tr><td class='fixed'>Analiza de produs</td><td><input data-save id="s7g_3_1" type="text" aria-label="Un exemplu explicat de echipă"></td></tr></tbody></table></div></div><div class="task"><h4><span class="tn">2</span>Reflecție Cognifeed (media echipei) <em>5 min</em></h4><label class="fld sl"><span>Cât de ușor a fost de folosit Cognifeed? (1–5)</span><input data-save type="range" min="1" max="5" value="3" id="s7a" oninput="this.nextElementSibling.textContent=this.value"><output>3</output></label><label class="fld sl"><span>Cât de echilibrat este timpul nostru pe ecran? (1–5)</span><input data-save type="range" min="1" max="5" value="3" id="s7b" oninput="this.nextElementSibling.textContent=this.value"><output>3</output></label><label class="fld sl"><span>Cât de bine aplicăm regulile despre Controlul calității? (1–5)</span><input data-save type="range" min="1" max="5" value="3" id="s7c" oninput="this.nextElementSibling.textContent=this.value"><output>3</output></label><label class="fld sl"><span>Cât de bine aplicăm regulile despre Sustenabilitate? (1–5)</span><input data-save type="range" min="1" max="5" value="3" id="s7d" oninput="this.nextElementSibling.textContent=this.value"><output>3</output></label></div><div class="task"><h4><span class="tn">3</span>Ce schimbăm de mâine și ce am aflat de la parteneri <em>5 min</em></h4><label class="fld"><span>Fiecare membru scrie o schimbare (fără nume, câte un rând).</span><textarea data-save id="s7s" rows="4" placeholder=""></textarea></label><label class="fld"><span>2 asemănări și 2 diferențe față de elevii din școlile partenere</span><textarea data-save id="s7p" rows="3" placeholder=""></textarea></label></div></div>
+  <label class="done"><input type="checkbox" data-save id="s7_done" onchange="updProgress()"> Am terminat secțiunea și Verificatorul a controlat răspunsurile</label>
+</section>
+<section class="sec" id="s8" data-title="Quiz final">
+  <header class="sh"><div class="snum">8</div><div><h2>(Auto)Evaluare · Quiz final</h2><p class="meta">Manual: p. 31 · ⏱ 30 de minute · 16 întrebări · nota se calculează automat</p></div>
+  <button type="button" class="btn timer" data-sec="s8" onclick="startTimer('s8')">▶ Pornește 30 min</button></header>
+  <div class="box work"><p>Discutați fiecare întrebare în echipă, apoi alegeți un singur răspuns. Coordonatorul apasă „Verifică testul” doar la final.</p><div class="q" data-ok="1" data-why="Higroscopicitatea = reținerea apei și a transpirației." id="qq0"><p><b>1.</b> Proprietatea unui material textil de a reține cu ușurință apa este:</p><label class="opt"><input type="radio" data-save name="q0" id="q0_0" value="0"> a) desimea</label><label class="opt"><input type="radio" data-save name="q0" id="q0_1" value="1"> b) higroscopicitatea</label><label class="opt"><input type="radio" data-save name="q0" id="q0_2" value="2"> c) rezistența</label><label class="opt"><input type="radio" data-save name="q0" id="q0_3" value="3"> d) flexibilitatea</label><p class="why"></p></div><div class="q" data-ok="1" data-why="Lâna provine de la oaie." id="qq1"><p><b>2.</b> Lâna este o fibră:</p><label class="opt"><input type="radio" data-save name="q1" id="q1_0" value="0"> a) naturală vegetală</label><label class="opt"><input type="radio" data-save name="q1" id="q1_1" value="1"> b) naturală animală</label><label class="opt"><input type="radio" data-save name="q1" id="q1_2" value="2"> c) chimică sintetică</label><label class="opt"><input type="radio" data-save name="q1" id="q1_3" value="3"> d) chimică artificială</label><p class="why"></p></div><div class="q" data-ok="2" data-why="Poliesterul se obține din petrol." id="qq2"><p><b>3.</b> Poliesterul este o fibră:</p><label class="opt"><input type="radio" data-save name="q2" id="q2_0" value="0"> a) naturală vegetală</label><label class="opt"><input type="radio" data-save name="q2" id="q2_1" value="1"> b) naturală animală</label><label class="opt"><input type="radio" data-save name="q2" id="q2_2" value="2"> c) chimică sintetică</label><label class="opt"><input type="radio" data-save name="q2" id="q2_3" value="3"> d) din mătase</label><p class="why"></p></div><div class="q" data-ok="1" data-why="Bumbacul lasă pielea să respire." id="qq3"><p><b>4.</b> Fibrele de bumbac sunt folosite la obținerea:</p><label class="opt"><input type="radio" data-save name="q3" id="q3_0" value="0"> a) broderiilor</label><label class="opt"><input type="radio" data-save name="q3" id="q3_1" value="1"> b) lenjeriei de corp</label><label class="opt"><input type="radio" data-save name="q3" id="q3_2" value="2"> c) covoarelor</label><label class="opt"><input type="radio" data-save name="q3" id="q3_3" value="3"> d) pelerinelor</label><p class="why"></p></div><div class="q" data-ok="1" data-why="Urzeala: pe lungime; bătătura: pe lățime." id="qq4"><p><b>5.</b> Firele de urzeală sunt așezate:</p><label class="opt"><input type="radio" data-save name="q4" id="q4_0" value="0"> a) pe lățimea țesăturii</label><label class="opt"><input type="radio" data-save name="q4" id="q4_1" value="1"> b) pe lungimea țesăturii</label><label class="opt"><input type="radio" data-save name="q4" id="q4_2" value="2"> c) în cerc</label><label class="opt"><input type="radio" data-save name="q4" id="q4_3" value="3"> d) în ochiuri</label><p class="why"></p></div><div class="q" data-ok="1" data-why="Tricotul = ochiuri înlănțuite." id="qq5"><p><b>6.</b> Elementul de bază al structurii tricotului este:</p><label class="opt"><input type="radio" data-save name="q5" id="q5_0" value="0"> a) firul de urzeală</label><label class="opt"><input type="radio" data-save name="q5" id="q5_1" value="1"> b) ochiul</label><label class="opt"><input type="radio" data-save name="q5" id="q5_2" value="2"> c) nasturele</label><label class="opt"><input type="radio" data-save name="q5" id="q5_3" value="3"> d) tiparul</label><p class="why"></p></div><div class="q" data-ok="1" data-why="Definiția din Lecția 2." id="qq6"><p><b>7.</b> Condițiile ergonomice urmăresc:</p><label class="opt"><input type="radio" data-save name="q6" id="q6_0" value="0"> a) creșterea zgomotului</label><label class="opt"><input type="radio" data-save name="q6" id="q6_1" value="1"> b) reducerea efortului prin economie de mișcări</label><label class="opt"><input type="radio" data-save name="q6" id="q6_2" value="2"> c) mai multe materiale pe masă</label><label class="opt"><input type="radio" data-save name="q6" id="q6_3" value="3"> d) lucrul fără lumină</label><p class="why"></p></div><div class="q" data-ok="1" data-why="Normă de securitate din atelier." id="qq7"><p><b>8.</b> Fierul de călcat electric se așază:</p><label class="opt"><input type="radio" data-save name="q7" id="q7_0" value="0"> a) pe masa de croit</label><label class="opt"><input type="radio" data-save name="q7" id="q7_1" value="1"> b) pe un suport destinat acestui scop</label><label class="opt"><input type="radio" data-save name="q7" id="q7_2" value="2"> c) pe material</label><label class="opt"><input type="radio" data-save name="q7" id="q7_3" value="3"> d) pe scaun</label><p class="why"></p></div><div class="q" data-ok="1" data-why="Epura." id="qq8"><p><b>9.</b> Reprezentarea produsului pe planele de proiecție rotite se numește:</p><label class="opt"><input type="radio" data-save name="q8" id="q8_0" value="0"> a) schiță</label><label class="opt"><input type="radio" data-save name="q8" id="q8_1" value="1"> b) epură</label><label class="opt"><input type="radio" data-save name="q8" id="q8_2" value="2"> c) cotă</label><label class="opt"><input type="radio" data-save name="q8" id="q8_3" value="3"> d) tipar</label><p class="why"></p></div><div class="q" data-ok="1" data-why="Croirea și coaserea sunt operații de prelucrare." id="qq9"><p><b>10.</b> Croirea materialului este o operație de:</p><label class="opt"><input type="radio" data-save name="q9" id="q9_0" value="0"> a) pregătire</label><label class="opt"><input type="radio" data-save name="q9" id="q9_1" value="1"> b) prelucrare</label><label class="opt"><input type="radio" data-save name="q9" id="q9_2" value="2"> c) finisare</label><label class="opt"><input type="radio" data-save name="q9" id="q9_3" value="3"> d) promovare</label><p class="why"></p></div><div class="q" data-ok="0" data-why="Defectele posibile fac parte din analiză." id="qq10"><p><b>11.</b> Fișa de analiză a unui produs conține și:</p><label class="opt"><input type="radio" data-save name="q10" id="q10_0" value="0"> a) disfuncționalitățile posibile</label><label class="opt"><input type="radio" data-save name="q10" id="q10_1" value="1"> b) numele cumpărătorului</label><label class="opt"><input type="radio" data-save name="q10" id="q10_2" value="2"> c) parola magazinului</label><label class="opt"><input type="radio" data-save name="q10" id="q10_3" value="3"> d) culoarea preferată a croitorului</label><p class="why"></p></div><div class="q" data-ok="0" data-why="Simbolistica populară este geometrică și vegetală." id="qq11"><p><b>12.</b> Motive tradiționale românești întâlnite pe ie sunt:</p><label class="opt"><input type="radio" data-save name="q11" id="q11_0" value="0"> a) soarele, crucea, spirala</label><label class="opt"><input type="radio" data-save name="q11" id="q11_1" value="1"> b) codul QR</label><label class="opt"><input type="radio" data-save name="q11" id="q11_2" value="2"> c) logo-urile firmelor</label><label class="opt"><input type="radio" data-save name="q11" id="q11_3" value="3"> d) emoji-urile</label><p class="why"></p></div><div class="q" data-ok="1" data-why="Bug = defect de funcționare." id="qq12"><p><b>13.</b> Un „bug” este: <span class='tagteam'>întrebare a echipei</span></p><label class="opt"><input type="radio" data-save name="q12" id="q12_0" value="0"> a) O insectă din atelier</label><label class="opt"><input type="radio" data-save name="q12" id="q12_1" value="1"> b) Un defect al unei aplicații</label><label class="opt"><input type="radio" data-save name="q12" id="q12_2" value="2"> c) O fibră nouă</label><label class="opt"><input type="radio" data-save name="q12" id="q12_3" value="3"> d) Un tip de cusătură</label><p class="why"></p></div><div class="q" data-ok="1" data-why="Așa scrie în Lecția 5." id="qq13"><p><b>14.</b> Nanotehnologia permite obținerea unor materiale care: <span class='tagteam'>întrebare a echipei</span></p><label class="opt"><input type="radio" data-save name="q13" id="q13_0" value="0"> a) Se rup ușor</label><label class="opt"><input type="radio" data-save name="q13" id="q13_1" value="1"> b) Resping murdăria și nu prind miros</label><label class="opt"><input type="radio" data-save name="q13" id="q13_2" value="2"> c) Se topesc la soare</label><label class="opt"><input type="radio" data-save name="q13" id="q13_3" value="3"> d) Sunt doar din lână</label><p class="why"></p></div><div class="q" data-ok="1" data-why="Folosirea mai îndelungată economisește resurse." id="qq14"><p><b>15.</b> Care alegere este sustenabilă? <span class='tagteam'>întrebare a echipei</span></p><label class="opt"><input type="radio" data-save name="q14" id="q14_0" value="0"> a) Telefon nou în fiecare an</label><label class="opt"><input type="radio" data-save name="q14" id="q14_1" value="1"> b) Repararea și folosirea telefonului mai mult timp</label><label class="opt"><input type="radio" data-save name="q14" id="q14_2" value="2"> c) Aruncarea hainelor după o purtare</label><label class="opt"><input type="radio" data-save name="q14" id="q14_3" value="3"> d) Video pornit toată ziua</label><p class="why"></p></div><div class="q" data-ok="1" data-why="Așa se definește în Lecția 3." id="qq15"><p><b>16.</b> Controlul tehnic de calitate verifică: <span class='tagteam'>întrebare a echipei</span></p><label class="opt"><input type="radio" data-save name="q15" id="q15_0" value="0"> a) Doar prețul</label><label class="opt"><input type="radio" data-save name="q15" id="q15_1" value="1"> b) Aspectul produsului și corectitudinea operațiilor</label><label class="opt"><input type="radio" data-save name="q15" id="q15_2" value="2"> c) Doar culoarea</label><label class="opt"><input type="radio" data-save name="q15" id="q15_3" value="3"> d) Numele croitorului</label><p class="why"></p></div>
+  <button type="button" class="btn" onclick="checkQuiz()">✔ Verifică testul</button>
+  <div id="qres" class="qres"></div></div>
+  <label class="done"><input type="checkbox" data-save id="s8_done" onchange="updProgress()"> Am terminat quizul</label>
+</section>
+<footer>Proiect eTwinning Cognifeed · Educație tehnologică, cl. a VII-a · <a href="https://aureliainformatician.github.io/fise-etwinning-cognifeed/" target="_blank" rel="noopener">Fișele echipelor</a></footer>
+</main>
+<script>(function(){
+var TEAM = document.body.getAttribute('data-team') || 'hub';
+var KEY = 'cognifeed_echipa_' + TEAM;
+var mem = {};
+var store = {
+  get: function(){ try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e){ return mem; } },
+  set: function(d){ try { localStorage.setItem(KEY, JSON.stringify(d)); } catch(e){ mem = d; var s=document.getElementById('saved'); if(s) s.textContent='Atenție: browserul nu permite salvarea automată aici. Apăsați „Filă nouă” sau descărcați des.'; } }
+};
+function fields(){ return Array.prototype.slice.call(document.querySelectorAll('[data-save]')); }
+function collect(){
+  var d = {};
+  fields().forEach(function(el){
+    if (el.type === 'radio') { if (el.checked) d[el.name] = el.value; }
+    else if (el.type === 'checkbox') d[el.id] = el.checked;
+    else d[el.id] = el.value;
+  });
+  return d;
+}
+function apply(d){
+  fields().forEach(function(el){
+    if (el.type === 'radio') el.checked = (d[el.name] === el.value);
+    else if (el.type === 'checkbox') el.checked = !!d[el.id];
+    else if (d[el.id] !== undefined) { el.value = d[el.id]; if (el.type === 'range' && el.nextElementSibling) el.nextElementSibling.textContent = el.value; }
+  });
+  calcSum(); updProgress();
+}
+var t;
+function save(){ clearTimeout(t); t = setTimeout(function(){ store.set(collect()); var s=document.getElementById('saved'); if(s && s.textContent.indexOf('Atenție')<0) s.textContent = 'Salvat automat la ' + new Date().toLocaleTimeString('ro-RO',{hour:'2-digit',minute:'2-digit'}); }, 300); }
+document.addEventListener('input', function(e){ if (e.target.hasAttribute('data-save')) { save(); if (e.target.id.indexOf('s2g_')===0) calcSum(); } });
+document.addEventListener('change', function(e){ if (e.target.hasAttribute('data-save')) save(); });
+
+function calcSum(){
+  var tot = 0;
+  for (var r=0; r<5; r++){
+    var q = document.getElementById('s2g_'+r+'_1'), p = document.getElementById('s2g_'+r+'_2'), c = document.getElementById('s2g_'+r+'_3');
+    if (!q || !p || !c) return;
+    var v = (parseFloat(q.value)||0) * (parseFloat(p.value)||0);
+    c.value = v ? v.toFixed(2) : ''; c.readOnly = true; tot += v;
+  }
+  var s = document.getElementById('s2sum'); if (s) s.textContent = tot.toFixed(2);
+}
+window.updProgress = function(){
+  var all = document.querySelectorAll('.done input'), n = 0;
+  Array.prototype.forEach.call(all, function(b){
+    var id = b.id.replace('_done',''); var a = document.querySelector('.nav a[data-s="'+id+'"]');
+    if (b.checked) n++; if (a) a.classList.toggle('ok', b.checked);
+  });
+  var bar = document.getElementById('bar'); if (bar && all.length) bar.style.width = (100*n/all.length) + '%';
+};
+window.checkClassify = function(id){
+  var box = document.getElementById(id), sel = box.querySelectorAll('select'), ok = 0;
+  Array.prototype.forEach.call(sel, function(s){
+    var m = s.nextElementSibling, good = s.value === s.getAttribute('data-ok');
+    if (good) ok++;
+    m.textContent = s.value ? (good ? '✓' : '✗') : '?';
+    m.className = 'mark ' + (s.value ? (good ? 'g' : 'b') : '');
+  });
+  document.getElementById(id+'_res').textContent = ok + ' din ' + sel.length + ' corecte' + (ok === sel.length ? ' 🎉' : ' – mai încercați la cele marcate cu ✗');
+};
+window.checkQuiz = function(){
+  var qs = document.querySelectorAll('.q'), ok = 0, empty = 0;
+  Array.prototype.forEach.call(qs, function(q, i){
+    var c = q.querySelector('input:checked'), right = q.getAttribute('data-ok');
+    q.classList.remove('qok','qbad');
+    var why = q.querySelector('.why');
+    if (!c) { empty++; why.textContent = 'Fără răspuns.'; return; }
+    if (c.value === right) { ok++; q.classList.add('qok'); why.textContent = '✓ Corect. ' + q.getAttribute('data-why'); }
+    else { q.classList.add('qbad'); var lab = q.querySelectorAll('.opt')[right].textContent.trim(); why.textContent = '✗ Răspuns corect: ' + lab + '. ' + q.getAttribute('data-why'); }
+  });
+  var nota = 1 + 9 * ok / qs.length;
+  document.getElementById('qres').innerHTML = '<b>' + ok + ' din ' + qs.length + ' răspunsuri corecte</b> · Nota echipei: <b>' + nota.toFixed(2) + '</b>' + (empty ? ' · ' + empty + ' întrebări fără răspuns' : '');
+};
+var timer = null, end = 0, cur = '';
+window.startTimer = function(sid){
+  clearInterval(timer); end = Date.now() + 30*60*1000; cur = sid;
+  var title = (document.getElementById(sid).getAttribute('data-title')) || '';
+  var clk = document.getElementById('clock');
+  function tick(){
+    var left = Math.max(0, end - Date.now()), m = Math.floor(left/60000), s = Math.floor(left/1000)%60;
+    clk.textContent = '⏱ ' + title + ': ' + m + ':' + (s<10?'0':'') + s;
+    clk.classList.toggle('late', left < 5*60*1000);
+    if (!left) { clearInterval(timer); clk.textContent = '⏰ Timpul s-a terminat: ' + title; }
+  }
+  tick(); timer = setInterval(tick, 1000);
+};
+function reportHTML(){
+  var d = collect();
+  var main = document.querySelector('main').cloneNode(true);
+  main.querySelectorAll('button, .timer, input[type=file]').forEach(function(b){ b.remove(); });
+  main.querySelectorAll('textarea').forEach(function(el){ var o = document.getElementById(el.id); var p = document.createElement('div'); p.className='ans'; p.textContent = (o && o.value) || '—'; el.replaceWith(p); });
+  main.querySelectorAll('select').forEach(function(el){ var o = document.getElementById(el.id); var p = document.createElement('b'); p.className='ans'; p.textContent = (o && o.value) || '—'; el.replaceWith(p); });
+  main.querySelectorAll('input').forEach(function(el){
+    var o = el.id ? document.getElementById(el.id) : null; var p = document.createElement('span'); p.className='ans';
+    if (el.type === 'checkbox') p.textContent = (o && o.checked) ? '☑' : '☐';
+    else if (el.type === 'radio') { var on = document.querySelector('input[name="'+el.name+'"][value="'+el.value+'"]'); p.textContent = (on && on.checked) ? '●' : '○'; }
+    else p.textContent = (o && o.value) || '—';
+    el.replaceWith(p);
+  });
+  var css = document.querySelector('style').outerHTML;
+  return '<!DOCTYPE html><html lang="ro"><head><meta charset="utf-8"><title>Răspunsuri – ' + document.title + '</title>' + css +
+    '</head><body class="report"><p class="rep">Răspunsuri exportate la ' + new Date().toLocaleString('ro-RO') + '</p>' + main.outerHTML +
+    '<script type="application/json" id="cf-data">' + JSON.stringify(d).replace(/</g,'\\u003c') + '<\/script></body></html>';
+}
+window.exportReport = function(){
+  var blob = new Blob([reportHTML()], {type:'text/html'});
+  var a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'cognifeed-echipa-' + TEAM + '-raspunsuri.html';
+  document.body.appendChild(a); a.click(); a.remove();
+  var s = document.getElementById('saved'); if (s) s.textContent = 'Fișierul a fost descărcat. Dacă nu apare, folosiți „Filă nouă” sau „PDF”.';
+};
+window.copyAll = function(){
+  var txt = [];
+  document.querySelectorAll('main h2, main h4, main .fld, main .grid tr, main .crow, main .q, main .chk, main .member').forEach(function(el){
+    if (el.matches('h2')) { txt.push('\n== ' + el.textContent.trim() + ' =='); return; }
+    if (el.matches('h4')) { txt.push('\n' + el.textContent.trim()); return; }
+    var vals = [];
+    el.querySelectorAll('input, textarea, select, td.fixed, th').forEach(function(f){
+      if (f.matches('td.fixed, th')) vals.push(f.textContent.trim());
+      else if (f.type === 'checkbox') vals.push((f.checked?'[x] ':'[ ] ') + el.textContent.trim());
+      else if (f.type === 'radio') { if (f.checked) vals.push('Răspuns: ' + f.parentNode.textContent.trim()); }
+      else vals.push(f.value || '—');
+    });
+    var lab = el.querySelector('span') && !el.matches('.chk') ? el.querySelector('span').textContent.trim() + ': ' : (el.matches('.q') ? el.querySelector('p').textContent.trim() + ' ' : '');
+    if (el.matches('.crow')) lab = el.querySelector('span').textContent.trim() + ': ';
+    txt.push(lab + vals.join(' | '));
+  });
+  var out = document.title + '\n' + txt.join('\n');
+  function done(){ var s=document.getElementById('saved'); if(s) s.textContent='Textul a fost copiat. Lipiți-l într-un document sau un e-mail.'; }
+  if (navigator.clipboard) navigator.clipboard.writeText(out).then(done, fallback); else fallback();
+  function fallback(){ var t=document.createElement('textarea'); t.value=out; document.body.appendChild(t); t.select(); try{document.execCommand('copy'); done();}catch(e){} t.remove(); }
+};
+window.importFile = function(inp){
+  var f = inp.files[0]; if (!f) return;
+  var r = new FileReader();
+  r.onload = function(){
+    var txt = r.result, d = null;
+    try { d = JSON.parse(txt); } catch(e){ var m = txt.match(/<script type="application\/json" id="cf-data">([\s\S]*?)<\/script>/); if (m) try { d = JSON.parse(m[1]); } catch(e2){} }
+    var s = document.getElementById('saved');
+    if (d) { apply(d); store.set(collect()); if (s) s.textContent = 'Răspunsurile au fost încărcate din fișier.'; }
+    else if (s) s.textContent = 'Fișierul nu conține răspunsuri Cognifeed.';
+  };
+  r.readAsText(f);
+};
+window.openFull = function(){ window.open(location.href, '_blank'); };
+if (window.self === window.top) { var fb = document.getElementById('fullbtn'); if (fb) fb.style.display = 'none'; }
+// navigare activă
+if ('IntersectionObserver' in window) {
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { document.querySelectorAll('.nav a').forEach(function(a){ a.classList.toggle('cur', a.getAttribute('data-s') === e.target.id); }); } }); }, {rootMargin:'-40% 0px -55% 0px'});
+  document.querySelectorAll('.sec').forEach(function(s){ io.observe(s); });
+}
+if (document.body.className !== 'report') apply(store.get());
+})();
+</script>
+</body></html>

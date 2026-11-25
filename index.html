@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Cognifeed · Paginile echipelor</title>
+<style>:root{--c:#1e63c8}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",Roboto,Arial,sans-serif;background:#f3f5f9;color:#1d2430;line-height:1.55;font-size:16px}
+a{color:var(--c)}
+.top{position:sticky;top:0;z-index:10;background:#fff;border-bottom:3px solid var(--c);display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding:8px 16px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.brand{display:flex;flex-direction:column;font-size:15px}.brand .sub{font-size:12px;color:#5b6575}
+.nav{display:flex;gap:6px}
+.nav a{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;text-decoration:none;font-weight:700;border:2px solid var(--c);color:var(--c);background:#fff}
+.nav a.cur{background:var(--c);color:#fff}.nav a.ok{background:#e7f6ec;border-color:#2a8a4f;color:#2a8a4f}.nav a.ok.cur{background:#2a8a4f;color:#fff}
+.prog{flex:1 1 120px;height:8px;background:#e5e9f0;border-radius:6px;overflow:hidden;min-width:100px}#bar{height:100%;width:0;background:var(--c);transition:width .4s}
+.tools{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.clock{font-weight:700;color:var(--c);font-variant-numeric:tabular-nums}.clock.late{color:#c0392b}
+.btn{background:var(--c);color:#fff;border:0;border-radius:8px;padding:9px 16px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit}
+.btn.small{padding:6px 10px;font-size:13px}.btn.ghost{background:#fff;color:var(--c);border:1.5px solid var(--c)}
+.btn:hover{filter:brightness(1.08)}
+main{max-width:980px;margin:0 auto;padding:16px}
+.intro,.sec{background:#fff;border-radius:14px;padding:20px 22px;margin:18px 0;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.intro h1{margin:0 0 6px;color:var(--c)}
+.themes span{display:inline-block;background:var(--c);color:#fff;border-radius:20px;padding:3px 12px;margin:0 6px 6px 0;font-size:14px}
+.members{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:8px}.members p{grid-column:1/-1;margin:6px 0 0}
+.member{display:flex;gap:6px}.member input{flex:1;min-width:0}
+.rolehelp{margin-top:10px;background:#f7f9fc;border-radius:8px;padding:8px 12px}.rolehelp summary{cursor:pointer;font-weight:600}
+.saved{font-size:13px;color:#5b6575;margin:10px 0 0}
+.sh{display:flex;align-items:center;gap:14px;flex-wrap:wrap;border-bottom:1px solid #e5e9f0;padding-bottom:10px;margin-bottom:12px}
+.sh > div:nth-child(2){flex:1}
+.snum{width:46px;height:46px;border-radius:12px;background:var(--c);color:#fff;font-size:24px;font-weight:800;display:grid;place-items:center}
+.sh h2{margin:0;font-size:21px}.meta{margin:2px 0 0;color:#5b6575;font-size:13px}
+.box{border-radius:10px;padding:12px 16px;margin:12px 0}
+.box h3{margin:0 0 6px;font-size:17px}.box h3 em,.task h4 em{font-style:normal;font-weight:600;font-size:12px;background:rgba(0,0,0,.07);border-radius:10px;padding:2px 8px;margin-left:6px;vertical-align:middle}
+.info{background:#f4f7fc;border-left:5px solid var(--c)}
+.focus{background:#fff8e6;border-left:5px solid #e0a100}
+.dig{background:#eef8f2;border-left:5px solid #2a8a4f}
+.work{background:#fff;border:1.5px dashed #c9d2df}
+.quote{font-style:italic;color:#2a6a45}
+table.ref{border-collapse:collapse;width:100%;font-size:14px;margin:8px 0}table.ref th,table.ref td{border:1px solid #d5dce6;padding:6px 8px;vertical-align:top;text-align:left}table.ref th{background:var(--c);color:#fff}
+.task{margin:12px 0 18px}.task h4{margin:0 0 8px;font-size:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tn{width:26px;height:26px;border-radius:50%;background:var(--c);color:#fff;display:inline-grid;place-items:center;font-size:14px}
+.fld{display:block;margin:8px 0}.fld>span{display:block;font-size:14px;font-weight:600;margin-bottom:3px}
+input[type=text],input[type=number],input:not([type]),textarea,select{width:100%;font:inherit;font-size:15px;padding:8px 10px;border:1.5px solid #c9d2df;border-radius:8px;background:#fff}
+textarea{resize:vertical}input:focus,textarea:focus,select:focus{outline:none;border-color:var(--c);box-shadow:0 0 0 3px rgba(0,0,0,.06)}
+.row2,.row3{display:grid;gap:10px}.row2{grid-template-columns:1fr 1fr}.row3{grid-template-columns:1fr 1fr 1fr}
+@media(max-width:640px){.row2,.row3{grid-template-columns:1fr}}
+.tw{overflow-x:auto}table.grid{border-collapse:collapse;width:100%;font-size:14px}table.grid th{background:#eef2f8;text-align:left;padding:6px 8px;border:1px solid #d5dce6}
+table.grid td{border:1px solid #d5dce6;padding:3px}table.grid td input{border:0;border-radius:4px;padding:6px}table.grid td.fixed{padding:6px 8px;background:#fafbfd;font-weight:600;width:42%}
+.total{text-align:right;margin:6px 0}
+.classify .ct{margin:0 0 6px;font-weight:600}.crow{display:grid;grid-template-columns:1fr 210px 24px;gap:8px;align-items:center;margin:4px 0}
+@media(max-width:640px){.crow{grid-template-columns:1fr 150px 20px}}
+.mark{font-size:18px}.mark.g{color:#2a8a4f}.mark.b{color:#c0392b}.cres{font-weight:600;margin-left:8px}
+.checks{display:grid;gap:4px;margin:6px 0}.chk{display:flex;gap:8px;align-items:center}
+.sl{display:grid;grid-template-columns:1fr 160px 24px;align-items:center;gap:8px}.sl>span{margin:0}.sl output{font-weight:700;color:var(--c)}
+.hint{font-weight:600;margin:10px 0 0}
+.done{display:flex;gap:10px;align-items:center;background:#f4f7fc;border-radius:8px;padding:10px 12px;font-weight:600;margin-top:8px}
+.done input,.chk input{width:20px;height:20px}
+.q{border:1px solid #e1e6ee;border-radius:10px;padding:10px 14px;margin:10px 0}.q p{margin:0 0 6px}
+.opt{display:block;padding:3px 0;cursor:pointer}.q.qok{border-color:#2a8a4f;background:#f0faf3}.q.qbad{border-color:#c0392b;background:#fdf2f1}
+.why{font-size:14px;color:#4a5566;margin:6px 0 0!important}
+.tagteam{font-size:12px;background:var(--c);color:#fff;border-radius:10px;padding:1px 8px;margin-left:6px}
+.qres{font-size:18px;margin-top:12px}
+footer{text-align:center;color:#6b7484;font-size:13px;padding:20px}
+.report .ans{display:inline-block;min-width:20px;color:#0b3d91;font-weight:600;white-space:pre-wrap}
+.report div.ans{display:block;border-left:3px solid var(--c);padding:4px 8px;background:#f7f9fc}
+.rep{text-align:center;color:#5b6575}
+@media print{.top,.timer,.btn,footer{display:none!important}body{background:#fff}.sec,.intro{box-shadow:none;break-inside:auto;border:1px solid #ddd}}
+.member select{width:130px;flex:0 0 130px}
+.classify .crows{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
+@media(max-width:760px){.classify .crows{grid-template-columns:1fr}}
+.crow{grid-template-columns:1fr 190px 22px}
+
+.hub{max-width:1100px;margin:30px auto;padding:0 16px}.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.card{display:flex;flex-direction:column;gap:6px;padding:18px;border-radius:14px;background:#fff;border:2px solid var(--c);color:#1d2430;text-decoration:none}
+.card:hover{box-shadow:0 6px 18px rgba(0,0,0,.12)}.card .ic{font-size:28px}.card small{color:#4a5566}.card em{color:var(--c);font-style:normal;font-weight:600;margin-top:auto}</style></head>
+<body><div class="hub"><h1>Cognifeed: Construim împreună obiceiuri digitale sănătoase</h1>
+<p>Fiecare echipă lucrează în pagina ei. Pagina conține toată structura proiectului: 7 secțiuni după lecțiile din Unitatea 1 „Materiale textile” și quizul final, câte 30 de minute fiecare.</p>
+<div class="cards"><a class="card" href="echipa-1.html" style="--c:#1e63c8"><span class="ic">🛡️</span><b>Echipa 1: Scutul Digital</b><small>Fibre naturale · Protecția datelor · Anti-cyberbullying</small><em>Deschide pagina echipei →</em></a><a class="card" href="echipa-2.html" style="--c:#b03a2e"><span class="ic">🛡️</span><b>Echipa 2: Gărzile Ciber-Adevărului</b><small>Fibre sintetice · Confidențialitate · Combaterea fake news</small><em>Deschide pagina echipei →</em></a><a class="card" href="echipa-3.html" style="--c:#6a3fc0"><span class="ic">🤖</span><b>Echipa 3: GardiAI-nii Datelor</b><small>Textile inteligente · Criptare · Detectare deepfake</small><em>Deschide pagina echipei →</em></a><a class="card" href="echipa-4.html" style="--c:#0e8a6b"><span class="ic">💻</span><b>Echipa 4: SafeBytes</b><small>Igiena hainelor · Autentificare · Echilibrul timpului</small><em>Deschide pagina echipei →</em></a><a class="card" href="echipa-5.html" style="--c:#c0560a"><span class="ic">🔍</span><b>Echipa 5: Decodificatorii de Adevăr</b><small>Analiza fibrelor · Date sensibile · Confort mental</small><em>Deschide pagina echipei →</em></a><a class="card" href="echipa-6.html" style="--c:#1b6f86"><span class="ic">⚙️</span><b>Echipa 6: Smart&Safe</b><small>Tehnologii moderne · Controlul calității · Sustenabilitate</small><em>Deschide pagina echipei →</em></a><a class="card" href="echipa-7.html" style="--c:#2a8a4f"><span class="ic">🌱</span><b>Echipa 7: Eco-Textile & Well-being</b><small>Reciclare · Autenticitate fără filtre · Calm online</small><em>Deschide pagina echipei →</em></a><a class="card" href="echipa-8.html" style="--c:#5f7f00"><span class="ic">🍃</span><b>Echipa 8: Bio-Fibre & Mintea Liniștită</b><small>Bio-fibre · Prieteni reali · Igiena digitală de seară</small><em>Deschide pagina echipei →</em></a></div></div></body></html>
